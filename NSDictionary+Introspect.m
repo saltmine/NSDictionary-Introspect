@@ -22,8 +22,6 @@ static NSString * const FloatTypeEncoding = @"f";
 static NSString * const DoubleTypeEncoding = @"d";
 static NSString * const BoolTypeEncoding = @"B";
 
-@implementation NSObject (Introspect)
-
 static const char *getPropertyType(objc_property_t property) {
     const char *attributes = property_getAttributes(property);
     char buffer[1 + strlen(attributes)];
@@ -43,6 +41,8 @@ static const char *getPropertyType(objc_property_t property) {
     
     return "";
 }
+
+@implementation NSObject (Introspect)
 
 + (NSDictionary *)dictionaryWithPropertiesOfObject:(id)object {
     if (object == NULL) {
